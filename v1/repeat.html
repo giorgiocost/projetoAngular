@@ -24,9 +24,17 @@
         
     </ul>
 
+    
+    <ul>
+        <li ng-repeat=" dado in dados" aria-label="{{list.nome +' '+list.idade}}">
+            {{dado.id +' '+dado.title}}
+        </li>      
+    </ul>
+    
+
     <script type="text/javascript">
         var app = angular.module("meuApp",[]);
-        app.controller("meuCtrl",($scope) => {
+        app.controller("meuCtrl",($scope, $http) => {
             $scope.ingredientes = [
                 "farinha",
                 "ovo",
@@ -37,6 +45,11 @@
                 {"nome": "Giorgio", "idade": 27},
                 {"nome": "Costa", "idade": 20}
             ];
+
+            $http.get('https://jsonplaceholder.typicode.com/posts').then((resp) =>{
+                $scope.dados = resp.data;
+                console.log('TCL: $scope.dados', $scope.dados);
+            })
         })
     </script>
 </body>
