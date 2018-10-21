@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="node_modules/angular/angular.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <div ng-app="" style="background:{{cor}}" ng-init="real=3.71" >
+
+        <input type="text" ng-model="dolar" placeholder="Dolar">
+<br>
+        Dolar:  $ {{dolar}}<br>
+        Real: R$ {{ res = dolar * real }} <br>
+
+        <input type="text" ng-model="cor" placeholder="Cor"><br>
+        <input type="text" ng-model="nome" placeholder="Nome"><br>
+        <input type="text" ng-model="sobrenome" placeholder="Sobrenome">
+        
+        <p ng-bind="nome"></p>
+        <strong>{{nome +' '+sobrenome}}</strong>
+    </div>
+    
+</body>
+</html>
