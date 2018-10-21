@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="node_modules/angular/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="meuApp" ng-controller="meuCtrl">
+        
+        <p></p>
+        <input type="text" ng-model="primeiroNome"><br>
+        <input type="text" ng-model="segundoNome"><br>
+        {{primeiroNome+' '+segundoNome}}
+        
+    </div>
+
+    <script type="text/javascript">
+
+        let app = angular.module("meuApp", []);
+
+        app.controller('meuCtrl',($scope) =>{
+            $scope.primeiroNome = "Giorgio";
+            $scope.segundoNome = "Costa";
+        });
+
+    </script>
+
+</body>
+</html>
