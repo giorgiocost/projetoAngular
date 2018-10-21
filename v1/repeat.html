@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="node_modules/angular/angular.js"></script>
+</head>
+<body ng-app="meuApp" ng-controller="meuCtrl">
+    <h2>Receita de Bolo</h2>
+    <ul>
+        <li ng-repeat=" ing in ingredientes" aria-label="{{ing}}">
+            {{ing}}
+        </li>
+    </ul>
+
+
+    <h2>Lista</h2>
+    <ul>
+        <li ng-repeat=" list in lista" aria-label="{{list.nome +' '+list.idade}}">
+            {{list.nome +' '+list.idade}}
+        </li>
+        
+    </ul>
+
+    <script type="text/javascript">
+        var app = angular.module("meuApp",[]);
+        app.controller("meuCtrl",($scope) => {
+            $scope.ingredientes = [
+                "farinha",
+                "ovo",
+                "chocolate"
+            ];
+
+            $scope.lista = [
+                {"nome": "Giorgio", "idade": 27},
+                {"nome": "Costa", "idade": 20}
+            ];
+        })
+    </script>
+</body>
+</html>
