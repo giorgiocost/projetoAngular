@@ -14,16 +14,36 @@
 
     <ul>
         <li ng-repeat="list in lista">
-            {{list}}
+            {{list.nome | uppercase}}
         </li>
     </ul>
+
+
+    <h2>Filtrar</h2>
+    <input type="text" ng-model="buscarNomes"><br>
+
+
+
+    <select ng-model="ordem">
+        <option value="nome">Nome</option>
+        <option value="pais">País</option>
+    </select>
+
+    <ul>
+        <li ng-repeat="list in lista | filter:buscarNomes | orderBy:ordem" >
+            {{list.nome}}
+        </li>
+    </ul>
+
+
     <hr>
         <!-- {{lista.resultado[0].nome+' '+lista.resultado[0].idade}} -->
 
     <script type="text/javascript">
         var app = angular.module("myApp",[]);
 
-        app.controller("myCtrl", ($scope, $http) =>{
+        app.controller("myCtrl", ($scope, $http) => { 
+
 
             $scope.titulo = "Lista de Nomes";
 
@@ -32,8 +52,8 @@
             // });
 
             $http.get("https://phpdozeroaoprofissional.com.br/testeangularjs.php").then((resp) => {
-                $scope.lista = resp.data;
-                console.log('TCL: $scope.lista', $scope.lista.resultado);
+                $scope.lista = resp.data.resultado;
+                console.log('TCL: $scope.lista', $scope.lista);
             });
 
             
