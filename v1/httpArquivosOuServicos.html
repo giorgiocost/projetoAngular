@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTTP</title>
+    <script src="node_modules/angular/angular.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    
+    <h2>{{titulo}}</h2>
+    <h2>{{html}}</h2>
+
+    <ul>
+        <li ng-repeat="list in lista">
+            {{list.nome +' | '+list.idade}}
+        </li>
+    </ul>
+    <hr>
+        <!-- {{lista.resultado[0].nome+' '+lista.resultado[0].idade}} -->
+
+    <script type="text/javascript">
+        var app = angular.module("myApp",[]);
+
+        app.controller("myCtrl", ($scope, $http) =>{
+
+            $scope.titulo = "Lista de Nomes";
+
+            // $http.get("pagina1.html").then((resp) => {
+            //     $scope.html = resp.data;
+            // });
+
+            $http.get("https://phpdozeroaoprofissional.com.br/testeangularjs.php").then((resp) => {
+                $scope.lista = resp.data.resultado;
+                console.log('TCL: $scope.lista', $scope.lista);
+            });
+
+            
+
+        });
+    </script>
+</body>
+</html>
